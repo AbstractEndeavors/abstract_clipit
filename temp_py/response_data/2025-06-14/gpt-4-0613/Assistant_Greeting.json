@@ -1,0 +1,56 @@
+{
+    "prompt": {
+        "model": "gpt-4",
+        "messages": [
+            {
+                "role": "assistant",
+                "content": "\n-----------------------------------------------------------------------------\n#instructions#\n\nYour response is expected to be in JSON format, with boolean responses as lowercase unquoted values (true/false), using the following keys:\n\n0) api_response - \"\"\"{'instruction': 'Place response to prompt here.', 'example': 'This is the reply to your request.', 'default': True}\"\"\"\n1) generate_title - \"\"\"{'instruction': 'Generate a short and concise title for this query, using underscores instead of spaces and avoiding special characters. The title should not exceed 200 characters to ensure compatibility with file systems.', 'example': 'Short_Title_for_Query', 'default': True}\"\"\"\n\nBelow is an example of the expected JSON dictionary response format, with default inputs. This response MUST be a dict:\n{\n  \"api_response\": \"This is the reply to your request.\",\n  \"generate_title\": \"Short_Title_for_Query\"\n}\n-----------------------------------------------------------------------------\n#prompt#\n\nwhatup dogg"
+            }
+        ],
+        "max_tokens": 7950
+    },
+    "response": {
+        "id": "chatcmpl-BiEikyR2E9XE4NC1QNn6qxCuBPoj3",
+        "object": "chat.completion",
+        "created": 1749882718,
+        "model": "gpt-4-0613",
+        "choices": [
+            {
+                "index": 0,
+                "message": {
+                    "role": "assistant",
+                    "content": {
+                        "api_response": "Hello! How can I assist you today?",
+                        "generate_title": "Assistant_Greeting"
+                    },
+                    "refusal": null,
+                    "annotations": []
+                },
+                "logprobs": null,
+                "finish_reason": "stop"
+            }
+        ],
+        "usage": {
+            "prompt_tokens": 193,
+            "completion_tokens": 28,
+            "total_tokens": 221,
+            "prompt_tokens_details": {
+                "cached_tokens": 0,
+                "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+                "reasoning_tokens": 0,
+                "audio_tokens": 0,
+                "accepted_prediction_tokens": 0,
+                "rejected_prediction_tokens": 0
+            }
+        },
+        "service_tier": "default",
+        "system_fingerprint": null,
+        "file_path": "/home/computron/bashScripts/python/temp_py/response_data/raw_response/1749882718.json",
+        "title": 1749882718
+    },
+    "file_path": "/home/computron/bashScripts/python/temp_py/response_data/2025-06-14/gpt-4-0613/Assistant_Greeting.json",
+    "title": "Assistant_Greeting",
+    "model": "gpt-4-0613"
+}

@@ -1,0 +1,67 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@Navbar": [
+        "src/components/Navbar"
+      ],
+      "@Header": [
+        "src/components/Header"
+      ],
+      "@Footer": [
+        "src/components/Footer"
+      ],
+      "@pdfViewer": [
+        "src/components/PdfViewer"
+      ],
+      "@ExcelViewer": [
+        "src/components/ExcelViewer"
+      ],
+      "@Body": [
+        "src/components/Body"
+      ],
+      "@PageHeader": [
+        "src/components/PageHeader"
+      ],
+      "@MetaHead": [
+        "src/components/MetaData/Head/MetaHead"
+      ],
+      "@Sources": [
+        "src/components/Sources"
+      ],
+      "@Social/*": [
+        "src/components/Social/*"
+      ],
+      "@Styles/*": [
+        "src/styles/*"
+      ],
+      "@Handles/*": [
+        "src/functions/Handles/*"
+      ],
+      "@functions": [
+        "src/functions"
+      ],
+      "@interfaces": [
+        "src/interfaces"
+      ],
+      "@pdfViewer": [
+        "src/components/pdfViewer"
+      ],
+    }
+  }
+}

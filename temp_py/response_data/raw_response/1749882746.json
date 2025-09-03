@@ -1,0 +1,41 @@
+{
+    "id": "chatcmpl-BiEjCT9C31eSxiN4n1AmkhdKPyPf2",
+    "object": "chat.completion",
+    "created": 1749882746,
+    "model": "gpt-4-0613",
+    "choices": [
+        {
+            "index": 0,
+            "message": {
+                "role": "assistant",
+                "content": {
+                    "api_response": "I'm an artificial intelligence and don't have personal feelings or experiences, but thank you for your friendly greeting. How can I assist you today?",
+                    "generate_title": "Friendly_Greeting_Response"
+                },
+                "refusal": null,
+                "annotations": []
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+        }
+    ],
+    "usage": {
+        "prompt_tokens": 193,
+        "completion_tokens": 48,
+        "total_tokens": 241,
+        "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "audio_tokens": 0,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0
+        }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null,
+    "file_path": "/home/computron/bashScripts/python/temp_py/response_data/raw_response/1749882746.json",
+    "title": 1749882746
+}

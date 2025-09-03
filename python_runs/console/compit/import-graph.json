@@ -1,0 +1,794 @@
+{
+  "entry": null,
+  "nodes": {
+    "/var/www/TDD/my-app/vite.config.ts": {
+      "exports": [],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/eslint.config.js": {
+      "exports": [],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/vite-env.d.ts": {
+      "exports": [],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/main.tsx": {
+      "exports": [],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/global.d.ts": {
+      "exports": [],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/App.tsx": {
+      "exports": [],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/layouts/RootLayout.tsx": {
+      "exports": [],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/pages/index.tsx": {
+      "exports": [],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/pages/articlepages.tsx": {
+      "exports": [],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/pages/_shared/useArticleData.ts": {
+      "exports": [
+        "loadArticle"
+      ],
+      "kinds": {
+        "loadArticle": "function"
+      }
+    },
+    "/var/www/TDD/my-app/src/pages/_shared/DynamicArticleRoute.tsx": {
+      "exports": [],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/functions/tdd_fetch_functions.ts": {
+      "exports": [
+        "fetchDirectoryCount",
+        "fetchDirectoryLink",
+        "fetchDirectoryLinks",
+        "fetchDirectoryList",
+        "fetchDirectoryPath",
+        "fetchDirectoryPaths",
+        "fetchImageComponent",
+        "fetchMediaData",
+        "fetchMetaData",
+        "fetchNavbarProps",
+        "fetchPdfViewerInfo",
+        "fetchSocialPostUrl",
+        "fetchTweetData",
+        "fetchValidPathItems",
+        "fetchValidPdfs",
+        "pdfFetchIt",
+        "renderSources"
+      ],
+      "kinds": {
+        "pdfFetchIt": "function",
+        "fetchMediaData": "function",
+        "fetchImageComponent": "function",
+        "fetchMetaData": "function",
+        "fetchDirectoryCount": "function",
+        "renderSources": "function",
+        "fetchPdfViewerInfo": "function",
+        "fetchDirectoryLinks": "function",
+        "fetchSocialPostUrl": "function",
+        "fetchNavbarProps": "function",
+        "fetchDirectoryList": "function",
+        "fetchDirectoryPaths": "function",
+        "fetchDirectoryLink": "function",
+        "fetchValidPdfs": "function",
+        "fetchTweetData": "function",
+        "fetchValidPathItems": "function",
+        "fetchDirectoryPath": "function"
+      }
+    },
+    "/var/www/TDD/my-app/src/functions/path_utils_client.ts": {
+      "exports": [
+        "get_basename",
+        "get_dirname",
+        "get_extname",
+        "get_filename",
+        "get_relative_path",
+        "get_safe_path",
+        "get_splitext",
+        "make_path",
+        "normalizeUrl",
+        "sanitizeFilename"
+      ],
+      "kinds": {
+        "get_splitext": "function",
+        "sanitizeFilename": "function",
+        "make_path": "function",
+        "normalizeUrl": "function",
+        "get_basename": "function",
+        "get_safe_path": "function",
+        "get_filename": "function",
+        "get_dirname": "function",
+        "get_extname": "function",
+        "get_relative_path": "function"
+      }
+    },
+    "/var/www/TDD/my-app/src/functions/functions.server.ts": {
+      "exports": [
+        "build_content",
+        "get_filename",
+        "get_static_props"
+      ],
+      "kinds": {
+        "build_content": "function",
+        "get_static_props": "function",
+        "get_filename": "function"
+      }
+    },
+    "/var/www/TDD/my-app/src/functions/index.ts": {
+      "exports": [],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/functions/functions.tsx": {
+      "exports": [
+        "build_content",
+        "contents_dir",
+        "fetchDirectoryCount",
+        "fetchDirectoryLink",
+        "fetchDirectoryLinks",
+        "fetchDirectoryList",
+        "fetchDirectoryPath",
+        "fetchDirectoryPaths",
+        "fetchImageComponent",
+        "fetchMediaData",
+        "fetchMetaData",
+        "fetchNavbarProps",
+        "fetchPdfViewerInfo",
+        "fetchSocialPostUrl",
+        "fetchTweetData",
+        "fetchValidPathItems",
+        "fetchValidPdfs",
+        "formatKeywords",
+        "get_full_path",
+        "get_full_url",
+        "if_log",
+        "imgs_dir",
+        "json_pages_dir",
+        "pages_dir",
+        "path_to_url",
+        "pdfFetchIt",
+        "pdfs_dir",
+        "public_dir",
+        "readBodyContent",
+        "renderSources",
+        "src_dir",
+        "tdd_api_url",
+        "tdd_dir",
+        "tdd_directory_count_url",
+        "tdd_directory_link_url",
+        "tdd_directory_lists_url",
+        "tdd_directory_path_url",
+        "tdd_image_url",
+        "tdd_imgs_url",
+        "tdd_media_url",
+        "tdd_metadata_url",
+        "tdd_navbar_props_url",
+        "tdd_pdfs_url",
+        "tdd_social_post_url",
+        "tdd_source_data_url",
+        "tdd_tweet_url",
+        "tdd_url",
+        "tdd_valid_directory_links",
+        "tdd_valid_directory_paths",
+        "url_to_path"
+      ],
+      "kinds": {
+        "if_log": "function",
+        "readBodyContent": "function",
+        "formatKeywords": "function"
+      }
+    },
+    "/var/www/TDD/my-app/src/functions/content_parser.tsx": {
+      "exports": [
+        "build_content",
+        "getImgComponent",
+        "getMediaData",
+        "iframeIt",
+        "iframeItParse",
+        "imgIt",
+        "lyricsIt",
+        "lyricsItParse",
+        "pageImgIt",
+        "seoImgIt",
+        "wrapADiv",
+        "wrapSeoImage"
+      ],
+      "kinds": {
+        "iframeIt": "function",
+        "wrapSeoImage": "function",
+        "iframeItParse": "function",
+        "getMediaData": "function",
+        "imgIt": "function",
+        "lyricsIt": "function",
+        "build_content": "function",
+        "seoImgIt": "function",
+        "getImgComponent": "function",
+        "wrapADiv": "function",
+        "lyricsItParse": "function",
+        "pageImgIt": "function"
+      }
+    },
+    "/var/www/TDD/my-app/src/functions/tdd_path_utils.ts": {
+      "exports": [
+        "get_full_path",
+        "get_full_url",
+        "path_to_url",
+        "url_to_path"
+      ],
+      "kinds": {
+        "url_to_path": "function",
+        "get_full_url": "function",
+        "path_to_url": "function",
+        "get_full_path": "function"
+      }
+    },
+    "/var/www/TDD/my-app/src/functions/Handles/index.ts": {
+      "exports": [],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/functions/Handles/Social/index.ts": {
+      "exports": [],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/functions/Handles/Social/HandleClick.tsx": {
+      "exports": [
+        "HandleShareClick",
+        "HandleShareUrlClick"
+      ],
+      "kinds": {
+        "HandleShareUrlClick": "const",
+        "HandleShareClick": "const"
+      }
+    },
+    "/var/www/TDD/my-app/src/functions/Handles/Viewers/index.ts": {
+      "exports": [],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/functions/Handles/Viewers/Scrolling/index.ts": {
+      "exports": [],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/functions/Handles/Viewers/Scrolling/HandleScroll.tsx": {
+      "exports": [
+        "HandleScroll"
+      ],
+      "kinds": {
+        "HandleScroll": "const"
+      }
+    },
+    "/var/www/TDD/my-app/src/types/shared-functions.d.ts": {
+      "exports": [
+        "eatAll",
+        "eatEnd",
+        "eatInner",
+        "eatOuter",
+        "fetchIt",
+        "getSubstring",
+        "get_basename",
+        "get_dirname",
+        "get_extname",
+        "get_filename",
+        "get_splitext",
+        "make_path",
+        "make_sanitized_path",
+        "normalizeUrl",
+        "sanitizeFilename",
+        "truncateString"
+      ],
+      "kinds": {
+        "get_splitext": "function",
+        "sanitizeFilename": "function",
+        "make_sanitized_path": "function",
+        "make_path": "function",
+        "eatAll": "function",
+        "normalizeUrl": "function",
+        "fetchIt": "function",
+        "get_basename": "function",
+        "truncateString": "function",
+        "eatEnd": "function",
+        "eatInner": "function",
+        "eatOuter": "function",
+        "get_filename": "function",
+        "getSubstring": "function",
+        "get_dirname": "function",
+        "get_extname": "function"
+      }
+    },
+    "/var/www/TDD/my-app/src/interfaces/index.ts": {
+      "exports": [],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/interfaces/interfaces.ts": {
+      "exports": [],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/components/Social/Props/ShareButton.tsx": {
+      "exports": [],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/components/Social/Props/Container.tsx": {
+      "exports": [],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/components/Social/X/Share/Button.tsx": {
+      "exports": [],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/components/Social/Facebook/Share/Button.tsx": {
+      "exports": [],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/components/CssVariablesControl/CssVariablesControl.tsx": {
+      "exports": [],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/components/CssVariablesControl/index.ts": {
+      "exports": [
+        "CssVariablesControl"
+      ],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/components/pdfViewer/index.ts": {
+      "exports": [
+        "PdfViewer"
+      ],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/components/pdfViewer/pdfViewer.tsx": {
+      "exports": [],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/components/Body/Body.tsx": {
+      "exports": [],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/components/Body/index.ts": {
+      "exports": [
+        "Body"
+      ],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/components/Navbar/Navbars.tsx": {
+      "exports": [],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/components/Navbar/index.ts": {
+      "exports": [
+        "Navbar"
+      ],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/components/Navbar/Navbar.tsx": {
+      "exports": [],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/components/MetaData/Head/meta_image.tsx": {
+      "exports": [
+        "generateVerboseMetadata"
+      ],
+      "kinds": {
+        "generateVerboseMetadata": "function"
+      }
+    },
+    "/var/www/TDD/my-app/src/components/MetaData/Head/MetaHead.tsx": {
+      "exports": [
+        "eatAll",
+        "eatInner",
+        "eatOuter",
+        "generateFullPageMetadata",
+        "processKeywords"
+      ],
+      "kinds": {
+        "eatAll": "function",
+        "processKeywords": "function",
+        "eatInner": "function",
+        "eatOuter": "function",
+        "generateFullPageMetadata": "function"
+      }
+    },
+    "/var/www/TDD/my-app/src/components/Header/Header.tsx": {
+      "exports": [],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/components/Header/index.ts": {
+      "exports": [
+        "Header"
+      ],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/components/Footer/index.ts": {
+      "exports": [
+        "Footer"
+      ],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/components/Footer/Footer.tsx": {
+      "exports": [],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/components/ExcelViewer/ExcelViewer.tsx": {
+      "exports": [],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/components/ExcelViewer/index.ts": {
+      "exports": [
+        "ExcelViewer"
+      ],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/components/PageHeader/PageHeader.tsx": {
+      "exports": [
+        "PageHeader"
+      ],
+      "kinds": {
+        "PageHeader": "function"
+      }
+    },
+    "/var/www/TDD/my-app/src/components/PageHeader/index.ts": {
+      "exports": [
+        "PageHeader"
+      ],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/components/SourceEditor/index.ts": {
+      "exports": [
+        "MetadataEditor"
+      ],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/components/SourceEditor/SourceEditor.tsx": {
+      "exports": [],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/components/Sources/index.ts": {
+      "exports": [
+        "Sources"
+      ],
+      "kinds": {}
+    },
+    "/var/www/TDD/my-app/src/components/Sources/Sources.tsx": {
+      "exports": [],
+      "kinds": {}
+    }
+  },
+  "edges": [
+    {
+      "from": "/var/www/TDD/my-app/src/main.tsx",
+      "to": "/var/www/TDD/my-app/src/App.tsx",
+      "named": [
+        "<default>"
+      ]
+    },
+    {
+      "from": "/var/www/TDD/my-app/src/main.tsx",
+      "to": "./styles/globals.css",
+      "named": [
+        "<side-effect>"
+      ],
+      "unresolved": true
+    },
+    {
+      "from": "/var/www/TDD/my-app/src/App.tsx",
+      "to": "/var/www/TDD/my-app/src/layouts/RootLayout.tsx",
+      "named": [
+        "<default>"
+      ]
+    },
+    {
+      "from": "/var/www/TDD/my-app/src/App.tsx",
+      "to": "/var/www/TDD/my-app/src/pages/_shared/DynamicArticleRoute.tsx",
+      "named": [
+        "<default>"
+      ]
+    },
+    {
+      "from": "/var/www/TDD/my-app/src/pages/_shared/DynamicArticleRoute.tsx",
+      "to": "./ArticlePage",
+      "named": [
+        "<default>"
+      ],
+      "unresolved": true
+    },
+    {
+      "from": "/var/www/TDD/my-app/src/pages/_shared/DynamicArticleRoute.tsx",
+      "to": "/var/www/TDD/my-app/src/pages/_shared/useArticleData.ts",
+      "named": [
+        "loadArticle"
+      ]
+    },
+    {
+      "from": "/var/www/TDD/my-app/src/functions/tdd_fetch_functions.ts",
+      "to": "/var/www/TDD/my-app/src/functions/tdd_path_utils.ts",
+      "named": [
+        "tdd_navbar_props_url",
+        "tdd_directory_lists_url",
+        "tdd_directory_path_url",
+        "tdd_directory_link_url",
+        "tdd_valid_directory_links",
+        "tdd_valid_directory_paths",
+        "tdd_directory_count_url",
+        "tdd_media_url",
+        "tdd_metadata_url",
+        "tdd_image_url",
+        "tdd_tweet_url",
+        "tdd_social_post_url",
+        "tdd_source_data_url",
+        "tdd_pdf_viewer_info_url",
+        "tdd_valid_pdf_links_url",
+        "tdd_valid_path_items"
+      ]
+    },
+    {
+      "from": "/var/www/TDD/my-app/src/functions/functions.tsx",
+      "to": "/var/www/TDD/my-app/src/functions/tdd_fetch_functions.ts",
+      "named": [
+        "fetchNavbarProps",
+        "fetchDirectoryList",
+        "fetchDirectoryPath",
+        "fetchDirectoryLink",
+        "fetchDirectoryLinks",
+        "fetchDirectoryPaths",
+        "fetchDirectoryCount",
+        "fetchMediaData",
+        "fetchMetaData",
+        "fetchImageComponent",
+        "fetchTweetData",
+        "fetchSocialPostUrl",
+        "renderSources",
+        "fetchPdfViewerInfo",
+        "fetchValidPdfs",
+        "fetchValidPathItems",
+        "pdfFetchIt"
+      ]
+    },
+    {
+      "from": "/var/www/TDD/my-app/src/functions/functions.tsx",
+      "to": "/var/www/TDD/my-app/src/functions/content_parser.tsx",
+      "named": [
+        "build_content"
+      ]
+    },
+    {
+      "from": "/var/www/TDD/my-app/src/functions/functions.tsx",
+      "to": "/var/www/TDD/my-app/src/functions/tdd_path_utils.ts",
+      "named": [
+        "tdd_dir",
+        "tdd_url",
+        "public_dir",
+        "src_dir",
+        "contents_dir",
+        "json_pages_dir",
+        "pages_dir",
+        "imgs_dir",
+        "pdfs_dir",
+        "tdd_imgs_url",
+        "tdd_pdfs_url",
+        "tdd_api_url",
+        "tdd_metadata_url",
+        "tdd_directory_lists_url",
+        "tdd_navbar_props_url",
+        "tdd_directory_path_url",
+        "tdd_directory_link_url",
+        "tdd_directory_count_url",
+        "tdd_source_data_url",
+        "tdd_valid_directory_links",
+        "tdd_valid_directory_paths",
+        "tdd_media_url",
+        "tdd_image_url",
+        "tdd_tweet_url",
+        "tdd_social_post_url",
+        "url_to_path",
+        "path_to_url",
+        "get_full_path",
+        "get_full_url"
+      ]
+    },
+    {
+      "from": "/var/www/TDD/my-app/src/functions/content_parser.tsx",
+      "to": "/var/www/TDD/my-app/src/functions/tdd_fetch_functions.ts",
+      "named": [
+        "fetchImageComponent"
+      ]
+    },
+    {
+      "from": "/var/www/TDD/my-app/src/functions/content_parser.tsx",
+      "to": "/var/www/TDD/my-app/src/functions/tdd_path_utils.ts",
+      "named": [
+        "url_to_path",
+        "path_to_url",
+        "get_full_path",
+        "get_full_url"
+      ]
+    },
+    {
+      "from": "/var/www/TDD/my-app/src/components/Social/Props/ShareButton.tsx",
+      "to": "/var/www/TDD/my-app/src/functions/Handles/Social/HandleClick.tsx",
+      "named": [
+        "HandleShareUrlClick"
+      ]
+    },
+    {
+      "from": "/var/www/TDD/my-app/src/components/Social/Facebook/Share/Button.tsx",
+      "to": "/var/www/TDD/my-app/src/functions/Handles/Social/HandleClick.tsx",
+      "named": [
+        "HandleShareClick"
+      ]
+    },
+    {
+      "from": "/var/www/TDD/my-app/src/components/CssVariablesControl/CssVariablesControl.tsx",
+      "to": "./CssVariablesControl.module.css",
+      "named": [
+        "<default>"
+      ],
+      "unresolved": true
+    },
+    {
+      "from": "/var/www/TDD/my-app/src/components/CssVariablesControl/CssVariablesControl.tsx",
+      "to": "/var/www/TDD/my-app/src/interfaces/interfaces.ts",
+      "named": [
+        "CssVariable"
+      ]
+    },
+    {
+      "from": "/var/www/TDD/my-app/src/components/CssVariablesControl/index.ts",
+      "to": "/var/www/TDD/my-app/src/components/CssVariablesControl/CssVariablesControl.tsx",
+      "named": [
+        "default"
+      ]
+    },
+    {
+      "from": "/var/www/TDD/my-app/src/components/pdfViewer/index.ts",
+      "to": "/var/www/TDD/my-app/src/components/pdfViewer/pdfViewer.tsx",
+      "named": [
+        "default"
+      ]
+    },
+    {
+      "from": "/var/www/TDD/my-app/src/components/pdfViewer/pdfViewer.tsx",
+      "to": "./pdfViewer.module.css",
+      "named": [
+        "<default>"
+      ],
+      "unresolved": true
+    },
+    {
+      "from": "/var/www/TDD/my-app/src/components/Body/Body.tsx",
+      "to": "./Body.module.css",
+      "named": [
+        "<default>"
+      ],
+      "unresolved": true
+    },
+    {
+      "from": "/var/www/TDD/my-app/src/components/Body/index.ts",
+      "to": "/var/www/TDD/my-app/src/components/Body/Body.tsx",
+      "named": [
+        "default"
+      ]
+    },
+    {
+      "from": "/var/www/TDD/my-app/src/components/Navbar/Navbars.tsx",
+      "to": "./Navbar.module.css",
+      "named": [
+        "<default>"
+      ],
+      "unresolved": true
+    },
+    {
+      "from": "/var/www/TDD/my-app/src/components/Navbar/index.ts",
+      "to": "/var/www/TDD/my-app/src/components/Navbar/Navbar.tsx",
+      "named": [
+        "default"
+      ]
+    },
+    {
+      "from": "/var/www/TDD/my-app/src/components/Navbar/Navbar.tsx",
+      "to": "./Navbar.module.css",
+      "named": [
+        "<default>"
+      ],
+      "unresolved": true
+    },
+    {
+      "from": "/var/www/TDD/my-app/src/components/Navbar/Navbar.tsx",
+      "to": "/var/www/TDD/my-app/src/functions/functions.tsx",
+      "named": [
+        "fetchNavbarProps"
+      ]
+    },
+    {
+      "from": "/var/www/TDD/my-app/src/components/Header/Header.tsx",
+      "to": "./Header.module.css",
+      "named": [
+        "<default>"
+      ],
+      "unresolved": true
+    },
+    {
+      "from": "/var/www/TDD/my-app/src/components/Header/index.ts",
+      "to": "/var/www/TDD/my-app/src/components/Header/Header.tsx",
+      "named": [
+        "default"
+      ]
+    },
+    {
+      "from": "/var/www/TDD/my-app/src/components/Footer/index.ts",
+      "to": "/var/www/TDD/my-app/src/components/Footer/Footer.tsx",
+      "named": [
+        "default"
+      ]
+    },
+    {
+      "from": "/var/www/TDD/my-app/src/components/Footer/Footer.tsx",
+      "to": "./Footer.module.css",
+      "named": [
+        "<default>"
+      ],
+      "unresolved": true
+    },
+    {
+      "from": "/var/www/TDD/my-app/src/components/ExcelViewer/ExcelViewer.tsx",
+      "to": "./ExcelViewer.module.css",
+      "named": [
+        "<side-effect>"
+      ],
+      "unresolved": true
+    },
+    {
+      "from": "/var/www/TDD/my-app/src/components/ExcelViewer/index.ts",
+      "to": "/var/www/TDD/my-app/src/components/ExcelViewer/ExcelViewer.tsx",
+      "named": [
+        "default"
+      ]
+    },
+    {
+      "from": "/var/www/TDD/my-app/src/components/PageHeader/PageHeader.tsx",
+      "to": "./PageHeader.module.css",
+      "named": [
+        "<default>"
+      ],
+      "unresolved": true
+    },
+    {
+      "from": "/var/www/TDD/my-app/src/components/PageHeader/index.ts",
+      "to": "/var/www/TDD/my-app/src/components/PageHeader/PageHeader.tsx",
+      "named": [
+        "default"
+      ]
+    },
+    {
+      "from": "/var/www/TDD/my-app/src/components/SourceEditor/index.ts",
+      "to": "/var/www/TDD/my-app/src/components/SourceEditor/SourceEditor.tsx",
+      "named": [
+        "default"
+      ]
+    },
+    {
+      "from": "/var/www/TDD/my-app/src/components/Sources/index.ts",
+      "to": "/var/www/TDD/my-app/src/components/Sources/Sources.tsx",
+      "named": [
+        "default"
+      ]
+    },
+    {
+      "from": "/var/www/TDD/my-app/src/components/Sources/Sources.tsx",
+      "to": "./Sources.module.css",
+      "named": [
+        "<default>"
+      ],
+      "unresolved": true
+    }
+  ]
+}

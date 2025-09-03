@@ -1,0 +1,8 @@
+PyQt6
+abstract_gui
+abstract_pandas
+abstract_paths
+abstract_utilities
+pathlib
+pdf2image
+pytesseract

@@ -121,9 +121,9 @@ def runPypit():
         )
         try_commit(commit_message, git_env)
         print("🚀 Pushing to GitHub...")
-        branch = _current_branch(env=git_env)
+        branch = current_branch(env=git_env)
         push_to_origin(branch, env=git_env)
-        _run(["git", "push", "--tags", "origin"], cwd=str(REPO_ROOT), env=git_env)
+        run_github(["git", "push", "--tags", "origin"], cwd=str(REPO_ROOT), env=git_env)
 
         # 7) upload to PyPI
         ensure_clean_repo(where="runPypit/before-upload")

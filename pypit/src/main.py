@@ -95,8 +95,8 @@ def runPypit():
 
         # Push MUST succeed
         print("🚀 Pushing commit and tags to GitHub...")
-        subprocess.run(["git", "push"], check=True)
-        subprocess.run(["git", "push", "--tags"], check=True)
+        _run(["git", "push", "origin", branch], cwd=str(REPO_ROOT), env=git_env)
+        _run(["git", "push", "--tags", "origin"], cwd=str(REPO_ROOT), env=git_env)
 
         # 🔒 Only now is PyPI allowed
         ensure_clean_repo(where="runPypit/before-upload")

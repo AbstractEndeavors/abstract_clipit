@@ -46,7 +46,17 @@ def runPypit():
     while True:
         # 🔒 ensure clean before any version/builder mutations
         ensure_clean_repo(where="runPypit/before-compute-version")
+        # 🔒 guard before build
+        ensure_clean_repo(where="runPypit/before-build")
+        print("🔧 Building package...")
+        output, stderr = build_package()
+        if output is None and stderr is None:
+            raise RuntimeError("❌ Build failed — aborting before PyPI upload.")
+        print("✅ Build complete.")
 
+        # 🔒 Only now is PyPI allowed
+        ensure_clean_repo(where="runPypit/before-upload")
+        print("📤 Uploading to PyPI (twine)...")
         current_pypi_version = get_current_version(package_name)
         print(f"Current version on PyPI: {current_pypi_version}")
 

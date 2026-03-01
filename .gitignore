@@ -1,0 +1,9 @@
+build/
+dist/
+logs/
+*.egg-info/
+__pycache__/
+*.pyc
+*.whl
+*.tar.gz
+*.asc

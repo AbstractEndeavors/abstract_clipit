@@ -86,5 +86,25 @@ def _find_repo_root(start: Path) -> Path:
             return cur
         cur = cur.parent
     raise RuntimeError("Not inside a git repository")
+def git(cmd, check=True):
+    subprocess.run(["git"] + cmd, check=check)
 
+def ensure_clean_git_tree():
+    result = subprocess.run(
+        ["git", "status", "--porcelain"],
+        capture_output=True,
+        text=True,
+    )
+    if result.stdout.strip():
+        print("❌ Git working tree is dirty. Commit or stash changes first.")
+        exit(1)
+
+def commit_and_tag(version: str):
+    git(["add", "-A"])
+    git(["commit", "-m", f"release: v{version}"])
+    git(["tag", f"v{version}"])
+
+def push_with_tags():
+    git(["push"])
+    git(["push", "--tags"])
 REPO_ROOT = _find_repo_root(Path(__file__).parent)

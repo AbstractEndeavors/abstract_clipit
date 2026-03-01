@@ -124,13 +124,21 @@ def build_package(package_name=None, path=None):
     return None, None
 
 def upload_package(package_name=None, path=None):
+    """Upload the package to PyPI (non-interactive)."""
     try:
-        output, stderr = getCommandRunLocal(key="upload", package_name=package_name, path=path)
-        print(f"Package uploaded successfully: {output}")
-        return output, stderr
-    except Exception as e:
-        print(f"Error during upload to PyPI: {e}")
-    return None, None
+        subprocess.run(
+            [
+                "python3", "-m", "twine", "upload",
+                "--repository", "pypi",
+                "--non-interactive",
+                "dist/*",
+            ],
+            check=True,
+        )
+        print("✅ Package uploaded to PyPI.")
+    except subprocess.CalledProcessError:
+        print("❌ PyPI upload failed.")
+        exit(1)
 
 def update_setup_py_version(setup_path="setup.py", new_version="0.0.10"):
     p = Path(setup_path)

@@ -10,7 +10,44 @@ def ensure_pyproject_toml():
                 "build-backend = \"setuptools.build_meta\"\n"
             )
         print("pyproject.toml created.")
+GITIGNORE_ENTRIES = [
+    "build/",
+    "dist/",
+    "logs/",
+    "*.egg-info/",
+    "__pycache__/",
+    "*.pyc",
+    "*.pyo",
+    "*.whl",
+    "*.tar.gz",
+    "*.asc",
+    ".env",
+    ".venv/",
+]
 
+def ensure_gitignore(root="."):
+    root = Path(root)
+    gi = root / ".gitignore"
+    
+    existing = set()
+    if gi.exists():
+        existing = {l.strip() for l in gi.read_text().splitlines() if l.strip()}
+    
+    missing = [e for e in GITIGNORE_ENTRIES if e not in existing]
+    if missing:
+        with gi.open("a") as f:
+            f.write("\n" + "\n".join(missing) + "\n")
+        print(f"📝 Added {len(missing)} entries to .gitignore")
+
+    # untrack anything that's now in .gitignore but still indexed
+    result = subprocess.run(
+        ["git", "ls-files", "--ignored", "--exclude-standard", "-z"],
+        cwd=root, capture_output=True, text=True
+    )
+    tracked_noise = [f for f in result.stdout.split("\0") if f]
+    if tracked_noise:
+        subprocess.run(["git", "rm", "-r", "--cached", "--"] + tracked_noise, cwd=root)
+        print(f"🗑️  Untracked {len(tracked_noise)} previously-committed artifact(s)")
 def get_package_name(path=None):
     try:
         output, stderr = getCmdRunLocal(key="package_name", path=path)

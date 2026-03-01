@@ -64,6 +64,7 @@ def update_package_until_synced(package_name, new_version=None):
 
 def runPypit():
     # 0) SSH setup
+    ensure_gitignore()
     git_env = ensure_git_ssh()
 
     package_name = get_package_name()

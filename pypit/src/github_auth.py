@@ -10,7 +10,7 @@ from .imports import *
 # Subprocess helpers — env threads through everything
 # ------------------------------------------------------------------------------
 
-def _run(cmd, cwd=None, check=True, env=None):
+def run_github(cmd, cwd=None, check=True, env=None):
     """Run a list command, return (stdout, stderr)."""
     p = subprocess.run(cmd, cwd=cwd, env=env, text=True, capture_output=True)
     if check and p.returncode != 0:
@@ -19,7 +19,7 @@ def _run(cmd, cwd=None, check=True, env=None):
 
 def _git(cmd, check=True, env=None):
     """Run a git command from repo root with optional env."""
-    return _run(["git", *cmd], cwd=str(REPO_ROOT), check=check, env=env)
+    return run_github(["git", *cmd], cwd=str(REPO_ROOT), check=check, env=env)
 
 # ------------------------------------------------------------------------------
 # SSH helpers
@@ -189,8 +189,8 @@ def stage_and_commit_if_changes(message: str, env=None):
 
 # github_auth.py — push_to_origin: distinguish "nothing to push" from "push succeeded"
 def push_to_origin(branch: str, env=None):
-    _run(["git", "fetch", "origin"], cwd=str(REPO_ROOT), check=False, env=env)
-    _run(["git", "pull", "--rebase", "origin", branch], cwd=str(REPO_ROOT), check=False, env=env)
+    run_github(["git", "fetch", "origin"], cwd=str(REPO_ROOT), check=False, env=env)
+    run_github(["git", "pull", "--rebase", "origin", branch], cwd=str(REPO_ROOT), check=False, env=env)
 
     up_ok = subprocess.run(
         ["git", "rev-parse", "--abbrev-ref", "--symbolic-full-name", "@{u}"],
@@ -198,7 +198,7 @@ def push_to_origin(branch: str, env=None):
     ).returncode == 0
 
     cmd = ["git", "push"] + (["-u"] if not up_ok else []) + ["origin", branch]
-    out, err = _run(cmd, cwd=str(REPO_ROOT), check=False, env=env)
+    out, err = run_github(cmd, cwd=str(REPO_ROOT), check=False, env=env)
     combined = (out or "") + "\n" + (err or "")
 
     if "Permission denied (publickey)" in combined:

@@ -95,7 +95,7 @@ def runPypit():
 
         # Push MUST succeed
         print("🚀 Pushing commit and tags to GitHub...")
-        branch = _current_branch(env=git_env)
+        branch = current_branch(env=git_env)
         push_to_origin(branch, env=git_env)
         _run(["git", "push", "--tags", "origin"], cwd=str(REPO_ROOT), env=git_env)
         # 🔒 Only now is PyPI allowed

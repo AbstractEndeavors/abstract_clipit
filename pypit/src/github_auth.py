@@ -121,7 +121,7 @@ def ensure_remote_repo(package_name: str, prefer_org_owner: int = 2, private=Fal
 # Git repo setup
 # ------------------------------------------------------------------------------
 
-def _current_branch(env=None):
+def current_branch(env=None):
     out, _ = _git(["symbolic-ref", "--short", "HEAD"], check=False, env=env)
     return out.strip() or "main"
 
@@ -223,7 +223,7 @@ def _try_stage_commit_push(commit_message: str, git_env: dict):
         print(f"⚠️ stage_and_commit_if_changes failed: {e}")
 
     try:
-        branch = _current_branch(env=git_env)
+        branch = current_branch(env=git_env)
         push_to_origin(branch, env=git_env)
         push_ok = True
     except Exception as e:

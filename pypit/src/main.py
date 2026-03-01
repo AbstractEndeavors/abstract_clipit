@@ -56,6 +56,7 @@ def runPypit():
     git_env = ensure_git_ssh()
 
     package_name = get_package_name()
+    
     print(f"Package name: {package_name}")
 
     git_env = git_debug_repo_and_remote(package_name, env=git_env)
@@ -76,9 +77,9 @@ def runPypit():
 
         # 2) compute version
         current_pypi_version = get_current_version(package_name)
-        print(f"Current version on PyPI: {current_pypi_version}")
+        #print(f"Current version on PyPI: {current_pypi_version}")
         pypi_increment_version = get_pypi_increment_version(package_name)
-        print(f"Pypi increment version: {pypi_increment_version}")
+        #print(f"Pypi increment version: {pypi_increment_version}")
 
         # 3) update setup.py
         ensure_clean_repo(where="runPypit/before-update-setup.py")
@@ -127,7 +128,7 @@ def runPypit():
 
         # 7) upload to PyPI
         ensure_clean_repo(where="runPypit/before-upload")
-        print("📤 Uploading to PyPI (twine)...")
+        #print("📤 Uploading to PyPI (twine)...")
         try:
             up_out, up_err = upload_package(package_name=package_name)
             print("PyPI upload output:\n", up_out or "")

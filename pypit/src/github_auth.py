@@ -182,9 +182,9 @@ def set_repo_ssh_key_for_this_repo(key_path=None, env=None):
 def stage_and_commit_if_changes(message: str, env=None):
     _git(["add", "-A"], env=env)
     status_out, _ = _git(["status", "--porcelain"], check=False, env=env)
-
-    _git(["commit", "-m", message], env=env)
-    return True
+    if status_out.strip():
+        _git(["commit", "-m", message], env=env)
+        return True
     return False
 
 # github_auth.py — push_to_origin: distinguish "nothing to push" from "push succeeded"

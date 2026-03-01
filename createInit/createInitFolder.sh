@@ -140,24 +140,40 @@ setup_py_utils_module() {
   local NAME
   NAME=$(get_local_name "$1") || return 1
 
-  echo "Debug: Creating directories $NAME, $NAME/utils, and $NAME/imports"
-  mkdir -p "$NAME/utils" "$NAME/imports"
+  echo "Debug: Creating directories $NAME, $NAME/src, and $NAME/imports"
+  mkdir -p "$NAME/src" "$NAME/src/imports" "$NAME/src/functions"
 
   # __init__.py for the module
   echo "Debug: Creating $NAME/__init__.py"
   cat > "$NAME/__init__.py" <<EOF
-from .utils import *
+from .src import *
+from .main import *
 EOF
-
+  cat > "$NAME/src/__init__.py" <<EOF
+from .imports import *
+from .functions import *
+from .$NAME import *
+EOF
+  cat > "$NAME/src/imports/__init__.py" <<EOF
+from .imports import *
+EOF
+  cat > "$NAME/src/imports/imports.py" <<EOF
+EOF
+  cat > "$NAME/src/functions/__init__.py" <<EOF
+from .functions import *
+EOF
+  cat > "$NAME/src/functions/functions.py" <<EOF
+EOF
   # utils/__init__.py
-  echo "Debug: Creating $NAME/utils/__init__.py"
-  cat > "$NAME/utils/__init__.py" <<EOF
-from .utils import *
+  echo "Debug: Creating $NAME/src/main.py"
+  cat > "$NAME/main.py" <<EOF
+from .src import *
 EOF
 
   # utils/utils.py: prefix + clipboard
-  echo "Debug: Creating $NAME/utils/utils.py with import and clipboard content"
-  append_clipboard "from ..imports import *" > "$NAME/utils/utils.py"
+  echo "Debug: Creating $NAME/src/main.py with import and clipboard content"
+  append_clipboard "from .imports import *
+from .functions import *" > "$NAME/src/$NAME.py"
 
   # imports/__init__.py
   echo "Debug: Creating $NAME/imports/__init__.py"

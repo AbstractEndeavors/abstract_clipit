@@ -2,7 +2,35 @@ import os
 import subprocess
 import requests
 import re
+def enforce_psycopg3_dependency():
+    """
+    Ensure psycopg2 / psycopg2-binary are NOT present in setup.py.
+    Force psycopg[binary] instead.
+    """
+    with open("setup.py", "r") as f:
+        content = f.read()
 
+    original = content
+
+    # Replace any psycopg2 variants
+    content = re.sub(
+        r"(psycopg2-binary|psycopg2)(\s*[<>=!~].*?)?(['\"])",
+        r"psycopg[binary]\3",
+        content,
+    )
+
+    # Also catch plain strings
+    content = content.replace("'psycopg2'", "'psycopg[binary]'")
+    content = content.replace('"psycopg2"', '"psycopg[binary]"')
+    content = content.replace("'psycopg2-binary'", "'psycopg[binary]'")
+    content = content.replace('"psycopg2-binary"', '"psycopg[binary]"')
+
+    if content != original:
+        with open("setup.py", "w") as f:
+            f.write(content)
+        print("🔧 Enforced psycopg[binary] dependency in setup.py")
+    else:
+        print("ℹ️ No psycopg2 dependency found in setup.py")
 def ensure_pyproject_toml():
     """Ensure pyproject.toml exists in the current directory."""
     if not os.path.exists("pyproject.toml"):
@@ -139,38 +167,124 @@ def update_package_until_synced(package_name,new_version=None):
 #            update_to_specific(package_name,new_version)
 #        else:
         update_package(package_name)
+import time
+from typing import Optional
+
+def wait_for_pypi_propagation(
+    package_name: str,
+    expected_version: str,
+    max_wait_seconds: int = 180,
+    check_interval: int = 10,
+) -> bool:
+    """
+    Explicit wait for PyPI CDN propagation.
+    
+    Returns:
+        True if version is available, False if timeout
+    """
+    print(f"Waiting for {package_name}=={expected_version} on PyPI CDN...")
+    
+    start_time = time.time()
+    while time.time() - start_time < max_wait_seconds:
+        try:
+            response = requests.get(
+                f"https://pypi.org/pypi/{package_name}/json",
+                timeout=5
+            )
+            if response.status_code == 200:
+                available_version = response.json()["info"]["version"]
+                if available_version == expected_version:
+                    print(f"✓ Version {expected_version} available on PyPI")
+                    return True
+                print(f"PyPI shows {available_version}, waiting for {expected_version}...")
+        except requests.RequestException as e:
+            print(f"Check failed: {e}")
+        
+        time.sleep(check_interval)
+    
+    print(f"Timeout waiting for {expected_version}")
+    return False
+
+
+def install_package_explicit(package_name: str, version: str) -> bool:
+    """
+    Explicit pip install - no bash aliases.
+    
+    Returns:
+        True if successful
+    """
+    try:
+        subprocess.run(
+            [
+                "pip", "install", 
+                f"{package_name}=={version}",
+                "--upgrade",
+                "--no-cache-dir",  # Force fresh download
+            ],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        return True
+    except subprocess.CalledProcessError as e:
+        print(f"Install failed: {e.stderr}")
+        return False
+
+
+def verify_local_version(package_name: str, expected_version: str) -> bool:
+    """Explicit version verification."""
+    actual = get_local_version(package_name)
+    if actual == expected_version:
+        print(f"✓ Local install verified: {package_name}=={expected_version}")
+        return True
+    print(f"✗ Version mismatch: expected {expected_version}, got {actual}")
+    return False
+
+
 def main():
-    # Ensure pyproject.toml exists
     ensure_pyproject_toml()
-
-    # Retrieve package name
+    
     package_name = get_package_name()
-    print(f"Package name: {package_name}")
-
-    # Get current version from PyPI
+    enforce_psycopg3_dependency()
+    update_package_until_synced(package_name)
+    
+    print(f"Package: {package_name}")
+    
     current_version = get_current_version(package_name)
-    print(f"Current version on PyPI: {current_version}")
-
-    # Increment version
     new_version = increment_version(current_version)
-
-    # Update setup.py with new version
+    print(f"Version: {current_version} → {new_version}")
+    
+    # Update and build
     update_version_in_setup(current_version, new_version)
-
-    # Clean previous builds
+    
     if os.path.exists("dist"):
-        print("Cleaning up previous builds...")
+        print("Cleaning dist/...")
         for file in os.listdir("dist"):
             os.remove(os.path.join("dist", file))
-
-    # Build the package
+    
     build_package()
-
-    # Upload the package to PyPI
     upload_package()
     
-    update_package_until_synced(package_name,new_version)
-
+    # Explicit wait for propagation
+    if not wait_for_pypi_propagation(package_name, new_version):
+        print("WARNING: Timeout waiting for PyPI - proceeding anyway")
+    
+    # Explicit install with retry
+    max_retries = 3
+    for attempt in range(1, max_retries + 1):
+        print(f"Install attempt {attempt}/{max_retries}...")
+        
+        if install_package_explicit(package_name, new_version):
+            if verify_local_version(package_name, new_version):
+                print(f"✓ SUCCESS: {package_name}=={new_version} deployed and installed")
+                return
+        
+        if attempt < max_retries:
+            print(f"Retrying in 10s...")
+            time.sleep(10)
+    
+    print(f"✗ FAILED: Could not verify local installation of {new_version}")
+    exit(1)
 
 if __name__ == "__main__":
     main()

@@ -2,7 +2,7 @@
 
 # Setup Conda environment
 export PATH="/home/computron/miniconda/bin:$PATH"
-source /home/computron/miniconda/etc/profile.d/conda.sh
+source /home/flerb/bashScripts/python/idle/open_with_idle.sh
 conda activate base
 
 # Define Python executable path from the activated environment

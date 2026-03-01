@@ -4,17 +4,17 @@
 
 
 # Path to the virtual environment
-#VENV_PATH="/home/gamook/Documents/pythonScripts/virtual_env"
-
+#VENV_PATH="/home/op/Documents/pythonScripts/virtual_env"
+source /home/op/bashScripts/functions/functions/index.sh
 # Path to the requirements.txt file
-#REQ_PATH="/home/gamook/Documents/pythonScripts/requirements.txt"
+#REQ_PATH="/home/op/Documents/pythonScripts/requirements.txt"
 
 # Activate the virtual environment
 #source "$VENV_PATH/bin/activate"
-export PATH="/home/computron/miniconda/bin:$PATH"
-source /home/computron/miniconda/etc/profile.d/conda.sh
-conda activate base
-
+#export PATH="/home/op/miniconda/bin:$PATH"
+#source /home/flerb/miniconda/etc/profile.d/conda.sh
+#conda activate base
+activate_conda
 # Check if at least one argument is given
 if [ $# -eq 0 ]; then
     echo "Usage: $0 [pip options] <package1> [package2] [...]"

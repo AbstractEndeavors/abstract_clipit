@@ -27,10 +27,8 @@ for path in paths:
     isfile = os.path.isfile(path)
     if isfile:
         content = read_from_file(path)
-        input(content)
     else:
         dirlist = os.listdir(path)
-        input(dirlist)
 def get_contents_text(self, file_path: str, idx: int = 0, filtered_paths: list[str] = []):
     basename = os.path.basename(file_path)
     filename, ext = os.path.splitext(basename)

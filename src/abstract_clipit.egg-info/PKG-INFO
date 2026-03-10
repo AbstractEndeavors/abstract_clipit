@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: abstract_clipit
-Version: 0.0.1.65
+Version: 0.0.1.66
 Summary: Built using PyQt6, it provides a drag-and-drop interface, a file system browser, and a logging console, enabling users to easily copy file contents to the clipboard, parse Python files for functions and imports, and manage file extensions and directories dynamically.
 Home-page: https://github.com/AbstractEndeavors/abstract_clipit
 Author: putkoff

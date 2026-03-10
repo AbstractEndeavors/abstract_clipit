@@ -16,4 +16,3 @@ listy = []
 for each in listsi.split('\n'):
     listy.append(eatAll(each,[' ','\t','\n','']).split(':')[0])
     
-input('"'+'" | "'.join(listy)+'"')

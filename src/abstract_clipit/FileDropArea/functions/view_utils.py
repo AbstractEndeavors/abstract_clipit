@@ -6,9 +6,9 @@ def populate_python_view(self) -> None:
         filtered_set = set(self.filter_paths(self._last_raw_paths))
         for p in all_paths:
             item = QtWidgets.QListWidgetItem(os.path.basename(p))
-            item.setData(QtCore.Qt.UserRole, p)
-            item.setFlags(item.flags() | QtCore.Qt.ItemIsUserCheckable)
-            item.setCheckState(QtCore.Qt.Checked if p in filtered_set else QtCore.Qt.Unchecked)
+            item.setData(Qt.ItemDataRole.UserRole, p)
+            item.setFlags(item.flags() | Qt.ItemFlag.ItemIsUserCheckable)
+            item.setCheckState(Qt.CheckState.Checked if p in filtered_set else Qt.CheckState.Unchecked)
             self.python_file_list.addItem(item)
         self.python_file_list.setVisible(bool(all_paths))
     except Exception as e:
@@ -19,8 +19,8 @@ def _populate_list_view(self) -> None:
         if self.functions:
             for func in self.functions:
                 itm = QtWidgets.QListWidgetItem(f"{func['name']} ({func['file']})")
-                itm.setFlags(itm.flags() | QtCore.Qt.ItemIsUserCheckable)
-                itm.setCheckState(QtCore.Qt.Unchecked)
+                itm.setFlags(itm.flags() | Qt.ItemFlag.ItemIsUserCheckable)
+                itm.setCheckState(Qt.CheckState.Unchecked)
                 self.function_list.addItem(itm)
             self.function_list.setVisible(True)
         else:

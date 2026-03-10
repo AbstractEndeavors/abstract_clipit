@@ -1,6 +1,4 @@
-from abstract_utilities import *
-import os, re, textwrap
-
+from .imports import *
 ROOT = os.path.dirname(os.path.abspath(__file__))
 FUNCS_DIR = os.path.join(ROOT, "functions")
 

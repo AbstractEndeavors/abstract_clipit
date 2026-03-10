@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: abstract_clipit
-Version: 0.0.1.54
+Version: 0.0.1.65
 Summary: Built using PyQt6, it provides a drag-and-drop interface, a file system browser, and a logging console, enabling users to easily copy file contents to the clipboard, parse Python files for functions and imports, and manage file extensions and directories dynamically.
 Home-page: https://github.com/AbstractEndeavors/abstract_clipit
 Author: putkoff
@@ -12,6 +12,7 @@ Classifier: Programming Language :: Python :: 3
 Classifier: Programming Language :: Python :: 3.11
 Requires-Python: >=3.6
 Description-Content-Type: text/markdown
+Requires-Dist: aiohttp
 Requires-Dist: PyQt6
 Requires-Dist: abstract_gui
 Requires-Dist: abstract_pandas
@@ -20,6 +21,7 @@ Requires-Dist: abstract_utilities
 Requires-Dist: pathlib
 Requires-Dist: pdf2image
 Requires-Dist: pytesseract
+Requires-Dist: abstract_modules
 Dynamic: author
 Dynamic: author-email
 Dynamic: classifier

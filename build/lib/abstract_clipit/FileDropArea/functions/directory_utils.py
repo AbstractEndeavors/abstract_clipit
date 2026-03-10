@@ -1,4 +1,5 @@
 from ..imports import *
+from abstract_utilities import *
 def _update_dir_patterns(self):
     """Update self.exclude_dirs from dir_input text."""
     text = self.dir_checks
@@ -33,15 +34,47 @@ def dropEvent(self, event: QtGui.QDropEvent):
         self._log(f"dropEvent ERROR:\n{tb}")
 
 def filter_paths(self, paths: list[str]) -> list[str]:
-    filtered = collect_filepaths(
-        paths,
-        allowed_exts=self.allowed_exts,
-        unallowed_exts=self.unallowed_exts,
-        exclude_types=self.exclude_types,
-        exclude_dirs=self.exclude_dirs,  # Use dynamic dir patterns
-        exclude_patterns=self.exclude_patterns
-    )
-    self._log(f"_filtered_file_list returned {len(filtered)} path(s)")
+    filtered=[]
+##    self._log(f"""filtering {paths} with allowed_exts={self.allowed_exts}\n,
+##            exclude_exts={self.exclude_exts}\n,
+##            allowed_types={self.allowed_types}\n,
+##            exclude_types={self.exclude_types}\n,
+##            allowed_dirs={self.allowed_dirs}\n,  # Use dynamic dir patterns
+##            exclude_dirs={self.exclude_dirs}\n,
+##            allowed_patterns={self.allowed_patterns}\n,
+##            exclude_patterns={self.exclude_patterns}\n
+##
+##            as\n\n
+##            filtered = collect_filepaths(
+##                {paths},
+##                allowed_exts={self.allowed_exts}\n,
+##                exclude_exts={self.exclude_exts}\n,
+##                allowed_types={self.allowed_types}\n,
+##                exclude_types={self.exclude_types}\n,
+##                allowed_dirs={self.allowed_dirs}\n,  # Use dynamic dir patterns
+##                exclude_dirs={self.exclude_dirs}\n,
+##                allowed_patterns={self.allowed_patterns}\n,
+##                exclude_patterns={self.exclude_patterns}\n
+##        )""")
+    cfg=define_defaults(allowed_exts=self.allowed_exts,
+            exclude_exts=self.exclude_exts,
+            allowed_types=self.allowed_types,
+            exclude_types=self.exclude_types,
+            allowed_dirs=self.allowed_dirs,  # Use dynamic dir patterns
+            exclude_dirs=self.exclude_dirs,
+            allowed_patterns=self.allowed_patterns,
+            exclude_patterns=self.exclude_patterns
+        )
+    allowed_items = filter_allowed_items(paths,cfg=cfg)
+    filtered = [item for item in allowed_items if os.path.isfile(item)]
+    dirs = [item for item in allowed_items if os.path.isdir(item)]
+    if dirs:
+        filtered += collect_filepaths(
+                directories=dirs,
+                cfg=cfg
+            )
+    filtered = list(set(filtered))   
+    self._log(f"_filtered_file_list returned {len(filtered)} path(s) as {filtered}")
     if not filtered:
         self.status.setText("⚠️ No valid files detected in drop.")
         self._log("No valid paths after filtering.")
@@ -52,7 +85,7 @@ def filter_paths(self, paths: list[str]) -> list[str]:
 def get_contents_text(self, file_path: str, idx: int = 0, filtered_paths: list[str] = []):
     basename = os.path.basename(file_path)
     filename, ext = os.path.splitext(basename)
-    if ext not in self.unallowed_exts:
+    if ext not in self.exclude_exts:
         header = f"=== {file_path} ===\n"
         footer = "\n\n――――――――――――――――――\n\n"
         info = {
@@ -78,7 +111,7 @@ def get_contents_text(self, file_path: str, idx: int = 0, filtered_paths: list[s
         return info
 
 def process_files(self, paths: list[str] = None) -> None:
-    paths = paths or []
+    paths = make_list(paths or [])
     self._last_raw_paths = paths
     filtered = self.filter_paths(paths)
     if not filtered:
@@ -89,6 +122,7 @@ def process_files(self, paths: list[str] = None) -> None:
     if self.ext_checks or self.dir_checks:
         visible_exts = {ext for ext, cb in self.ext_checks.items() if cb.isChecked()}
         visible_dirs = {di for di, cb in self.dir_checks.items() if cb.isChecked()}
+        
         self._log(f"Visible extensions: {visible_exts}")
         filtered_paths = [
             p for p in filtered
@@ -114,10 +148,7 @@ def process_files(self, paths: list[str] = None) -> None:
     self._populate_list_view()
     self._populate_text_view()
     self.status.setText("Files processed. Switch tabs to view.")
-
-
-
-
+    
 def on_function_clicked(self, item: QtWidgets.QListWidgetItem) -> None:
     index = self.function_list.row(item)
     function_info = self.functions[index]

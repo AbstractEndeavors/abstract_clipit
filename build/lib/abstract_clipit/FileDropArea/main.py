@@ -1,14 +1,12 @@
 from .imports import *
-from abstract_utilities import get_media_exts, eatOuter
-from .initFuncs import initFuncs
 logger = get_logFile('clipit_logs')
-
 class FileDropArea(QtWidgets.QWidget):
     function_selected = QtCore.pyqtSignal(dict)
     file_selected = QtCore.pyqtSignal(dict)
 
     def __init__(self, log_widget=None, view_widget=None, parent=None):
         super().__init__(parent)
+        initFuncs(self)
         self.setAcceptDrops(True)
         self.log_widget = log_widget
         self.view_widget = view_widget
@@ -20,11 +18,13 @@ class FileDropArea(QtWidgets.QWidget):
         self.python_files: list[dict] = []
         self.combined_text_lines: dict[str, dict] = {}
         self.allowed_exts = DEFAULT_ALLOWED_EXTS
-        self.unallowed_exts = DEFAULT_UNALLOWED_EXTS
+        self.exclude_exts = DEFAULT_EXCLUDE_EXTS
+        self.allowed_types = DEFAULT_ALLOWED_TYPES
         self.exclude_types = DEFAULT_EXCLUDE_TYPES
-        self.exclude_dirs = DEFAULT_EXCLUDE_DIRS | {"backup", "backups"}
+        self.allowed_dirs = DEFAULT_ALLOWED_DIRS
+        self.exclude_dirs = DEFAULT_EXCLUDE_DIRS
+        self.allowed_patterns = DEFAULT_ALLOWED_PATTERNS
         self.exclude_patterns = DEFAULT_EXCLUDE_PATTERNS
-        self.exclude_dirs = set()  # New: store user-specified dir patterns
 
         # Main vertical layout
         lay = QtWidgets.QVBoxLayout(self)
@@ -99,5 +99,3 @@ class FileDropArea(QtWidgets.QWidget):
         )
         # Initialize dir patterns from input
         self._update_dir_patterns()
-
-FileDropArea = initFuncs(FileDropArea)

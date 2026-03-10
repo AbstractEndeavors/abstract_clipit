@@ -37,8 +37,8 @@ def map_function_dependencies(self, function_info: dict) -> None:
     combined_lines.extend(function_info['imports'])
     project_files = collect_filepaths(
         [os.path.dirname(function_info['file'])],
-        exclude_dirs=self.exclude_dir_patterns,
-        exclude_file_patterns=self.exclude_file_patterns
+        exclude_dirs=self.exclude_dirs,
+        exclude_patterns=self.exclude_patterns
     )
     combined_lines.append("\n\n=== Project Reach ===\n")
     for file_path in project_files:
@@ -50,7 +50,7 @@ def map_function_dependencies(self, function_info: dict) -> None:
             except Exception as exc:
                 combined_lines.append(f"[Error reading {os.path.basename(file_path)}: {exc}]\n")
             combined_lines.append("\n")
-    QtWidgets.QApplication.clipboard().setText("\n".join(combined_lines))
+    QtWidgets.QApplication.clipboard().setText("\n".join([str(line) for line in combined_lines]))
     self.status.setText(f"✅ Copied function {function_info['name']} and dependencies to clipboard!")
     self._log(f"Copied function {function_info['name']} with dependencies")
 
@@ -70,7 +70,7 @@ def map_import_chain(self, file_info: dict) -> None:
             combined_lines.extend(f"- {imp}" for imp in imports)
         else:
             combined_lines.append("- None\n")
-        QtWidgets.QApplication.clipboard().setText("\n".join(combined_lines))
+        QtWidgets.QApplication.clipboard().setText("\n".join([str(line) for line in combined_lines]))
         self.status.setText(f"✅ Copied import chain for {os.path.basename(file_info['path'])} to clipboard!")
         self._log(f"Copied import chain for {file_info['path']}")
     except Exception as e:

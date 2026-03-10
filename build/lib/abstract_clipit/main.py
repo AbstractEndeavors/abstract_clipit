@@ -1,1 +1,1 @@
-from .clipitTab import clipitTab
+from .clipitTab import ClipIt

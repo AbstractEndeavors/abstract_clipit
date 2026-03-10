@@ -1,8 +1,7 @@
 from .imports import *
-from .initFuncs import initFuncs
 from ..FileSystemTree import FileSystemTree
 from ..FileDropArea import FileDropArea
-class clipitTab(QtWidgets.QWidget):
+class ClipIt(QtWidgets.QWidget):
     """
     Main window: toolbar + splitter:
       • Left: FileSystemTree
@@ -12,7 +11,7 @@ class clipitTab(QtWidgets.QWidget):
 
     def __init__(self,*args,**kwargs):
         super().__init__()
-
+        initFuncs(self)
         title = "ClipIt - File Browser + Drag/Drop + Logs"
         size=(950, 600)
         make_main_window(parent=self,
@@ -72,6 +71,5 @@ class clipitTab(QtWidgets.QWidget):
         self.tree_wrapper.tree.doubleClicked.connect(self.on_tree_double_click)
         self.drop_area.function_selected.connect(self.on_function_selected)
         self.drop_area.file_selected.connect(self.on_file_selected)
-
-
-clipitTab = initFuncs(clipitTab)
+    def start():
+        startConsole(ClipIt)

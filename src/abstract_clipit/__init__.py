@@ -1,5 +1,4 @@
-from .main import clipitTab
-from abstract_gui.QT6.utils.console_utils import startConsole,ConsoleBase
+from .main import ClipIt
 
 def startClipitConsole():
-    startConsole(clipitTab)
+    ClipIt.start()

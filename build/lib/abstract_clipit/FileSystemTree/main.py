@@ -1,11 +1,11 @@
 from .imports import *
-from .initFuncs import *
 class FileSystemTree(QtWidgets.QWidget):
     """
     Left‐hand pane: file browser + “Copy Selected” button.
     """
     def __init__(self, log_widget=None, parent=None):
         super().__init__(parent)
+        initFuncs(self)
         self.log_widget = get_log_widget()  # keep your shared log
         layout = get_layout(parent=self)
 
@@ -25,6 +25,4 @@ class FileSystemTree(QtWidgets.QWidget):
         )
 
         self.setLayout(layout)
-
-FileSystemTree = initFuncs(FileSystemTree)
 

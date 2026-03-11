@@ -1,17 +1,18 @@
 from .imports import *
 from ..FileSystemTree import FileSystemTree
 from ..FileDropArea import FileDropArea
-class ClipIt(QtWidgets.QWidget):
+from .functions import DropUtilsMixin
+
+class ClipIt(DropUtilsMixin, QtWidgets.QWidget):
+
     """
     Main window: toolbar + splitter:
       • Left: FileSystemTree
       • Right: FileDropArea
       • Bottom: QTextEdit for logs
     """
-
     def __init__(self,*args,**kwargs):
         super().__init__()
-        initFuncs(self)
         title = "ClipIt - File Browser + Drag/Drop + Logs"
         size=(950, 600)
         make_main_window(parent=self,

@@ -1,8 +1,12 @@
 from .imports import *
-class FileSystemTree(QtWidgets.QWidget):
+from .functions.text_utils import TextUtilsMixin
+
+class FileSystemTree(TextUtilsMixin, QtWidgets.QWidget):
+
     """
     Left‐hand pane: file browser + “Copy Selected” button.
     """
+
     def __init__(self, log_widget=None, parent=None):
         super().__init__(parent)
         initFuncs(self)

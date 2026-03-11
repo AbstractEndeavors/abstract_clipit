@@ -1,12 +1,22 @@
 from .imports import *
+from .functions.directory_utils import DirectoryUtilsMixin
+from .functions.python_utils import PythonUtilsMixin
+from .functions.rebuild_utils import RebuildUtilsMixin
+from .functions.view_utils import ViewUtilsMixin
 logger = get_logFile('clipit_logs')
-class FileDropArea(QtWidgets.QWidget):
+class FileDropArea(
+    DirectoryUtilsMixin,
+    PythonUtilsMixin,
+    RebuildUtilsMixin,
+    ViewUtilsMixin,
+    QtWidgets.QWidget
+    ):
+
     function_selected = QtCore.pyqtSignal(dict)
     file_selected = QtCore.pyqtSignal(dict)
 
     def __init__(self, log_widget=None, view_widget=None, parent=None):
         super().__init__(parent)
-        initFuncs(self)
         self.setAcceptDrops(True)
         self.log_widget = log_widget
         self.view_widget = view_widget

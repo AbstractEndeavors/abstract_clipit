@@ -16,7 +16,6 @@ src/abstract_clipit/FileDropArea/functions/__init__.py
 src/abstract_clipit/FileDropArea/functions/directory_utils.py
 src/abstract_clipit/FileDropArea/functions/python_utils.py
 src/abstract_clipit/FileDropArea/functions/rebuild_utils.py
-src/abstract_clipit/FileDropArea/functions/test_paths.py
 src/abstract_clipit/FileDropArea/functions/view_utils.py
 src/abstract_clipit/FileSystemTree/__init__.py
 src/abstract_clipit/FileSystemTree/imports.py
